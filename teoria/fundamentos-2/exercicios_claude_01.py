@@ -25,11 +25,11 @@ Crie uma função soma(*numeros) que recebe qualquer quantidade de números e re
 
 R:
 def soma(*numeros):
-    soma = 0
+    total = 0
     for num in numeros:
-        soma += num
+        total += num
 
-    return soma
+    return total
 
 print('Sua soma é igual a:', soma(1, 2, 3, 4, 5))
 '''
@@ -157,8 +157,6 @@ Médio
 Crie dois dicionários: dados_pessoais (nome, idade) e dados_contato (email, telefone). Mescle-os em um único dicionário usando **. Depois crie uma função exibir_perfil(**dados) que recebe e imprime cada chave-valor.
 
 R:
-'''
-
 def exibir_perfil(**dados):
     for chave, valor in dados.items():
         print(chave, valor)
@@ -178,4 +176,101 @@ dados_completos = {**dados_pessoais, **dados_contato}
 #print(dados_completos)
 
 exibir_perfil(**dados_completos)
+'''
 
+'''7
+Remover duplicatas e operar conjuntos
+Sets • union • intersection • difference
+#7
+Fácil
+Dadas duas listas com números repetidos, converta-as em sets. Depois mostre: a união dos dois, a interseção (elementos em ambos) e os elementos exclusivos de cada um.
+
+R:
+def retornar_set (lista):
+    s1 = set()
+    for num in lista:
+        s1.add(num)
+
+    # set1 = set(lista1) -- equivalente, muito mais simples
+
+    return s1 
+
+lista1 = [1, 1, 2, 3, 3, 3, 4, 5]
+lista2 = [0, 2, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 9]
+
+set1 = retornar_set(lista1)
+set2 = retornar_set(lista2)
+
+print('União: ', set1 | set2)
+print('Interseção: ', set1 & set2)
+print('Exclusivos set1: ', set1 - set2)
+print('Exclusivos set2: ', set2 - set1)
+'''
+
+'''8
+Mapeamento e filtro combinados
+List Comprehension • filtro • mapeamento
+#8
+Fácil
+Dada a lista numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], crie em uma única list comprehension uma nova lista com o quadrado apenas dos números ímpares.
+
+R:
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+lista_nova = [(num**2) for num in numeros if num%2 != 0]
+
+print(*lista_nova)
+'''
+
+'''9
+Reajuste de preços (mapeamento condicional)
+List Comprehension • dicionários • condição inline
+#9
+Médio
+Dada a lista de produtos abaixo, crie uma nova lista onde produtos com preço acima de 20 recebem 10% de desconto e os demais ficam sem alteração. Use list comprehension com condição inline (valor_a if cond else valor_b).
+
+R:
+produtos = [
+    {'nome': 'Caneta',   'preco': 5.0 },
+    {'nome': 'Caderno',  'preco': 25.0},
+    {'nome': 'Mochila',  'preco': 120.0},
+    {'nome': 'Borracha', 'preco': 2.0 },
+]
+
+produtos_reajustados = [
+    {**num, 'preco': num['preco']*0.9 } 
+    if num['preco'] > 20 
+    else num 
+    for num in produtos]
+
+for dicionario in produtos_reajustados:
+    for chave, valor in dicionario.items():
+        print(chave, valor)
+'''
+
+'''10
+Dict Comprehension + lambda + HOF
+Dictionary Comprehension • lambda • higher order
+#10
+Difícil
+Crie um dicionário operacoes usando dict comprehension que mapeia nomes de operações para funções lambda: 'dobro', 'quadrado', 'inverso' e 'absoluto'. Depois crie uma função aplicar_op(nome, valor) que busca a operação no dicionário e a executa. Teste com vários valores.
+
+R:
+def aplicar_op(nome, valor):
+    operacao = operacoes.get(nome)
+    if operacao is None:
+        return f'Nao existe operacao {nome}'
+    return operacao(valor)
+
+operacoes = {
+    'dobro': lambda x: x * 2,
+    'quadrado': lambda x: x**2,
+    'inverso': lambda x: -x,
+    'absoluto': lambda x: abs(x) 
+}
+
+executar = [('dobro', 40), ('quadrado', 20), ('inverso', -32), ('absoluto', -2324)]
+
+for nome, valor in executar:
+    print(aplicar_op(nome, valor))
+'''
