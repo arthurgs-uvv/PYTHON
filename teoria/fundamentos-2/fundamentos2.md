@@ -325,3 +325,104 @@ dc = {
 
 s1 = {i for i in range(10)}
 ```
+
+## ISINSTANCE
+
+- Serve para retornar true se a instância é do tipo informado.
+
+- isinstance([variavel], tipo)
+
+## Valores Truthy e Falsy - Tipos Mutáveis e Imutáveis
+
+### Mutáveis
+
+```python
+lista = []
+dicionario = {}
+conjunto = set()
+```
+
+### Imutáveis
+
+```python
+tupla = ()
+string = ''
+inteiro = 0
+flutuante = 0.0
+nada = None
+falso = False
+intervalo = range(0)
+```
+
+## Dir, hasattr e getattr
+
+- Dir -> vai em debugger, debug console e utiliza [dir(tipo)]
+- Serve para verificar nomes dentro dos tipos
+
+- Hasattr -> hasattr(tipo/variavel, metodo)
+- Serve para verificar se existe um metódo no tipo da variavel.
+
+- Getattr -> getattr(tipo/variavel, metodo em variavel)()
+- Serve para verificar se existe um método no tipo da variavel.
+
+```python
+string = 'Luiz'
+metodo = 'strip'
+
+if hasattr(string, metodo):
+    print('Existe upper')
+    print(getattr(string, metodo)())
+```
+
+## Generator expression, iterables e Iterators
+
+- Iterável — qualquer objeto que pode ser percorrido em um for.
+
+- Iterador — objeto criado a partir de um iterável que lembra sua posição atual e entrega um elemento por vez com next().
+
+- Generator — iterador preguiçoso que calcula um valor por vez, economizando memória.
+
+```python
+# EX1:
+lista    = ['Eu', 'Tenho', '__iter__']
+iterator = iter(lista)   # transforma o iterável em iterador
+
+print(next(iterator))   # 'Eu'
+print(next(iterator))   # 'Tenho'
+print(next(iterator))   # '__iter__'
+print(next(iterator))   # StopIteration — acabou!
+
+# EX2:
+
+# Lista — tudo na memória de uma vez
+lista = [x**2 for x in range(1_000_000)]
+
+# Generator — calcula sob demanda
+gen = (x**2 for x in range(1_000_000))
+
+print(next(gen))   # 0
+print(next(gen))   # 1
+print(next(gen))   # 4
+```
+
+## Generator Functions
+
+```python
+def generator(n=0):
+    yield 1  # Pausar
+    return 'ACABOU'
+```
+
+```python
+def generator(n=0, maximum=10):
+    while True:
+        yield n
+        n += 1
+
+        if n >= maximum:
+            return 'ACABOU'
+
+gen = generator(maximum=1000)
+for n in gen:
+    print(n)
+```
