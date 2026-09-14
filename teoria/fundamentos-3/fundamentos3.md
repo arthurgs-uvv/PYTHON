@@ -1,6 +1,6 @@
 # Fundamentos 3
 
-## Try, Except, else e finally
+## Tratamento de Erros
 
 ### TRY e EXCEPT
 
@@ -43,3 +43,55 @@ else:
 finally:
     print('FECHAR ARQUIVO')
 ```
+
+### RAISE
+
+- Lançando exceções (erros)
+- site: docs.python.org/pt-br/3/library/exceptions.html#built-in-exceptions
+
+```python
+try:
+    8/0
+except ZeroDivisionError:
+    print('Divisão por zero')
+    raise # Relança o erro no terminal    
+```
+
+```python
+a = a
+b = 0
+
+if b == 0:
+    raise ZeroDivisionError('Divisão por zero')
+```
+
+- Exemplo completo:
+
+```python
+def nao_aceito_zero(d):
+    if d == 0:
+        raise ZeroDivisionError('Você está tentando dividir por zero')
+    return True
+
+
+def deve_ser_int_ou_float(n):
+    tipo_n = type(n)
+    if not isinstance(n, (float, int)):
+        raise TypeError(
+            f'"{n}" deve ser int ou float. '
+            f'"{tipo_n.__name__}" enviado.'
+        )
+    return True
+
+
+def divide(n, d):
+    deve_ser_int_ou_float(n)
+    deve_ser_int_ou_float(d)
+    nao_aceito_zero(d)
+    return n / d
+
+
+print(divide(8, '0'))
+```
+
+## Módulos
