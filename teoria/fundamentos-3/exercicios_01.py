@@ -14,7 +14,6 @@ Requisitos:
 Teste com pelo menos um caso de erro e um caso de sucesso.
 '''
 
-'''
 def calcular(a, b, operacao):
     if operacao == 'soma':
         return a + b
@@ -29,33 +28,57 @@ def calcular(a, b, operacao):
     else:
         raise ValueError('Operacao indeterminada')
 
-valores = []
+for i in range(1,4):
+    try:
+        try:
+            value_a = int(input('Digite 2 valores numericos\nValor de a: '))
+            value_b = int(input('Valor de b: '))
+            value_ope = (input('Digite a operacao determinada\n' \
+            '[soma], [sub], [mult], [div]\nR: ')).lower()
 
-try:
-    print('Digite 2 valores numericos e a operacao determinada, respectivamente um de cada vez.\n' \
-    '[soma], [sub], [mult], [div]\n')
-    for j in range(0,3):
-        valores.append(input('R: '))
-
-    if not isinstance(int(valores[0]), (int,float)) and not isinstance(int(valores[1]), (int,float)):
-        raise TypeError('Voce digitou algum simbolo no lugar de numero')
+            resul = calcular(value_a, value_b, value_ope)
+        except ValueError as erro:
+            print(f'ERRO: {erro}\nPor favor digite valores certos para a e b')
+            continue
+        
+    except TypeError:
+        print(f'ERRO: {erro}\nPor favor digite valores numericos.')
+    except ZeroDivisionError as erro:
+        print(f'ERRO: {erro}\nPor favor não use b = 0')
+    except ValueError as erro:
+        print(f'ERRO: {erro}\n')
+    except:
+        print('Algum erro aconteceu1')
     else:
-        resultado = calcular(int(valores[0]), int(valores[1]), valores[2])
-except:
-    print('Algum erro aconteceu1')
-else:
-    print(f'Resultado: {resultado}')
-finally:
-    print('Fechando aplicativo...')
+        print(f'Resultado: {resul}')
+    finally:
+        print('Reiniciando\n\n')
+
 
 '''
+Processador de lista com erros
+try/except • list comprehension • funções • *args
+#2
+Médio
+Crie uma função processar(*valores) que recebe qualquer quantidade de valores e tenta converter cada um para float.
 
-def func(a, b):
-    if b == 0:
-        raise ZeroDivisionError('Divisor não pode ser zero') 
-    return a/b
+Requisitos:
+• Para cada valor, tente converter com float(valor) dentro de um try/except.
+• Se der ValueError, guarde o valor numa lista de invalidos.
+• Se der certo, guarde na lista de validos.
+• Ao final, retorne um dicionário com as chaves 'validos', 'invalidos' e 'media' (média dos válidos, ou None se não houver nenhum).
 
-try:
-    func(1, 0)
-except ZeroDivisionError as e:
-    print(f'ERROR é {e}')
+Teste com: processar(1, '2.5', 'abc', 4, 'xyz', '10')
+'''
+
+def processar(*valores):
+    lista_validos = []
+    lista_invalidos = []
+
+    for valor in valores:
+        try:
+            valor = float(valor)
+            lista_validos.append(valor)
+        except ValueError as erro:
+            print(f'ERRO ValueError, digite valores válidos')
+            lista_invalidos.append(valor)
