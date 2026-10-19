@@ -95,3 +95,37 @@ print(divide(8, '0'))
 ```
 
 ## Módulos
+
+- Import, from, as e *
+- Módulos python: <https://docs.python.org/3/py-moindex.html>
+
+- Inteiro - import nome_modulo
+- Vantagens: você tem o namespace do módulo
+- Desvantagens: nomes grandes
+
+- Partes - from nome_modulo import objeto1, objeto2
+- Vantagens: nomes pequenos
+- Desvantagens: sem o namespace do módulo
+
+- Alias 1 - import nome_modulo as 'apelido'
+- Alias 2 - from nome_modulo import objeto as 'apelido'
+- Vantagens: você pode reservar nomes para seu código
+- Desvantagens: pode ficar fora do padrão da linguagem
+
+- Má prática - from nome_modulo import *
+- Vantagens: importa tudo de um módulo
+- Desvantagens: importa tudo de um módulo
+
+### Importando seus módulos
+
+- Pasta executando o arquivo = __main__ [print(__name__)] para visualizar.
+- import nome_modulo
+- import sys -> print(sys.path): caminho dos arquivos.
+
+### Package
+
+- Uma pasta que contem módulos pode ser importada no main
+
+import nome_modulo.package
+
+- Nome de um modulo dentro do package: __init__.py - para iniciar o package

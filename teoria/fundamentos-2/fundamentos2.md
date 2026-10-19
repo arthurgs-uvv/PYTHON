@@ -154,6 +154,7 @@ else:
 - pop        - apaga um item com a chave especificada (del) ... [dicionario.pop('chave')]
 - popitem    - apaga o último item adicionado ... [dicionario.popitem()]
 - update     - atualiza um dicionário com outro ... [dicionario.update({'chave': valor1})]
+- deepcopy   - import copy, utiliza o var = copy.deepcopy(determinado_dicionario) para fazer uma cópia do dicionário atual
 
 ### EMPACOTAMENTO E DESEMPACOTAMENTO
 
