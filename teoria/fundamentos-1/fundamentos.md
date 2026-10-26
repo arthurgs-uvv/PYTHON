@@ -265,11 +265,15 @@ Aqui juntei os métodos que estavam separados em "OBJETOS DO PYTHON" e "MANIPULA
 ### Métodos de string
 
 ```python
-.lower()
-.upper()
-.endswith()
-.startswith()
-.count()
+.lower()        -> coloca tudo em minúsculo
+.upper()        -> coloca tudo em maiúsculo
+.endswith()     -> pergunta se termina com
+.startswith()   -> pergunta se começa com
+.count()        -> conta quantidade de determinado caractere
+.split()        -> separa as palavras em uma lista por determinado símbolo
+.join()         -> junta as palavras de uma lista com determinado símbolo
+.capitalize()   -> faz um string iniciar com letra maiuscula
+.title()        -> todas as palavras iniciam com letra maiuscula
 ```
 
 ### Métodos de verificação numérica
